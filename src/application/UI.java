@@ -28,12 +28,20 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	
+	
+	public static void clearScreen() {
+		// limpar tela, fonte abaixo:
+		// https://stackoverflow.com/questions/2979383/java-clear-the-console
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
+	} 
+	
 	public static ChessPosition readChessPosition(Scanner in) {
 		try {
-		String s = in.nextLine();
-		char column = s.charAt(0);
-		int row = Integer.parseInt(s.substring(1));
-		return new ChessPosition(column, row);
+			String s = in.nextLine();
+			char column = s.charAt(0);
+			int row = Integer.parseInt(s.substring(1));
+			return new ChessPosition(column, row);
 		}
 		catch (RuntimeException e) {
 			throw new InputMismatchException("Error reading ChessPosition! Valid values are a1 to h8.");

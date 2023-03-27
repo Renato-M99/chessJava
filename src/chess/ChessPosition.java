@@ -23,11 +23,11 @@ public class ChessPosition {
 		return row;
 	}
 	
-	protected Position toPosition() {
+	protected Position toPosition() {//converter posição informada char e int para int int 
 		return new Position(8 - row, column - 'a' ); 
 	}
 	
-	protected static ChessPosition fromPosition(Position position) {
+	protected static ChessPosition fromPosition(Position position) {//usar a conversão para colocar a posição char int no board
 		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
 	}
 	
